@@ -14,7 +14,7 @@ async function bootstrap(): Promise<void> {
         .build();
     const document = SwaggerModule.createDocument(app, options);
 
-    fs.writeFileSync('./api-doc.json', JSON.stringify(document));
+    fs.writeFileSync('./api-doc.json', JSON.stringify(document, undefined, 4));
 
     await app.close();
     process.exit();
