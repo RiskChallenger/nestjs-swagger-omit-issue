@@ -23,13 +23,57 @@
                         "nullable": true
                     }
                 }
+            },
+            "OmitTypeClass": {
+                "type": "object",
+                "properties": {
+                    "notes": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "startedAt": {
+                        "format": "date-time",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deadline": {
+                        "format": "date-time",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "owner": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "createdAt": {
+                        "format": "date-time",
+                        "type": "string",
+                        "default": "2020-12-15T09:25:24.013Z"
+                    },
+                    "updatedAt": {
+                        "format": "date-time",
+                        "type": "string",
+                        "default": "2020-12-15T09:25:24.013Z"
+                    },
+                    "id": {
+                        "type": "number"
+                    },
+                    "cost": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "updatedAt",
+                    "id"
+                ]
             }
         }
     },
     "paths": {
         "/": {
             "post": {
-                "operationId": "AppController_getHello",
+                "operationId": "AppController_createMeasure",
                 "parameters": [],
                 "requestBody": {
                     "required": true,
@@ -47,7 +91,33 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "string"
+                                    "$ref": "#/components/schemas/OmitTypeClass"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "operationId": "AppController_updateMeasure",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MeasureDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OmitTypeClass"
                                 }
                             }
                         }

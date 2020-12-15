@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { Measure } from './measure.entity';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getHello(): Measure {
+    return new Measure();
   }
 }
